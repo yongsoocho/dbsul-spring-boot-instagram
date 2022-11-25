@@ -3,6 +3,7 @@ package ac.kr.cau.dbsul.instagram.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @ToString
@@ -27,8 +28,6 @@ public class UserEntity {
 	@Column()
 	private String profileURL;
 
-	public UserEntity req(Object userDTO) {
-		return userDTO.builder().build();
-	}
-
+	@Column(name = "created_at")
+	private Date createdAt;
 }
