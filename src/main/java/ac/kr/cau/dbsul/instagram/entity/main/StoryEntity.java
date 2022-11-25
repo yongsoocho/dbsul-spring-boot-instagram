@@ -5,7 +5,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Getter
 @ToString
@@ -13,25 +12,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "FEED")
-public class FeedEntity {
+@Table(name = "STORY")
+public class StoryEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "feed_id")
-	private Long feedId;
+	@Column(name = "story_id")
+	private Long storyID;
 
 	@Column()
 	private String mediaURL;
 
-	@Column()
-	private String content;
-
 	@Column(name = "created_at")
 	private Date createdAt;
-
-	@Column(name = "updated_at")
-	private Date updatedAt;
 
 	@ManyToOne
 	@JoinColumn(name = "userId")

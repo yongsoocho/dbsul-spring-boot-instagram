@@ -21,7 +21,14 @@ public class UserEntity {
 	@Column(length = 50, nullable = false)
 	private String email;
 
+	@Column(length = 20, nullable = false, unique = true)
+	private String nickname;
+
 	@Column()
 	private String profileURL;
+
+	public UserEntity req(Object userDTO) {
+		return userDTO.builder().build();
+	}
 
 }
