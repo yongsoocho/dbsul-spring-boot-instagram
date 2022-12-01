@@ -9,8 +9,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 	@Override
-	public String getUsers() {
+	public String userLogin() {
 		return "hello world";
+	}
+
+	@Override
+	public String registerUser() {
+		return null;
 	}
 
 	@Override
@@ -29,7 +34,32 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String registerUser() {
+	public String getSetting() {
+		return null;
+	}
+
+	@Override
+	public String setMyMemo() {
+		return null;
+	}
+
+	@Override
+	public String blockUser() {
+		return null;
+	}
+
+	@Override
+	public String getChatRooms() {
+		return null;
+	}
+
+	@Override
+	public String getChatRoomMessages() {
+		return null;
+	}
+
+	@Override
+	public String sendMessage() {
 		return null;
 	}
 }
