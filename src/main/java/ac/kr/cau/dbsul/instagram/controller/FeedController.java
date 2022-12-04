@@ -1,6 +1,7 @@
 package ac.kr.cau.dbsul.instagram.controller;
 
 import ac.kr.cau.dbsul.instagram.dto.FeedCommentDto;
+import ac.kr.cau.dbsul.instagram.dto.FeedCommentLikeDto;
 import ac.kr.cau.dbsul.instagram.service.FeedService;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -76,8 +77,11 @@ public class FeedController {
 
 	// 댓글에 좋아요
 	@GetMapping("/comment/{commentId}")
-	public String createCommentLike() {
-		return feedService.createCommentLike();
+	public String createCommentLike(
+			@RequestBody FeedCommentLikeDto.Request request
+			) {
+		feedService.createCommentLike(request);
+		return "success";
 	}
 
 	// 대댓글 달기

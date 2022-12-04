@@ -1,14 +1,13 @@
 package ac.kr.cau.dbsul.instagram.service;
 
 import ac.kr.cau.dbsul.instagram.dto.FeedCommentDto;
+import ac.kr.cau.dbsul.instagram.dto.FeedCommentLikeDto;
 import ac.kr.cau.dbsul.instagram.dto.FeedDto;
 import ac.kr.cau.dbsul.instagram.entity.UserEntity;
 import ac.kr.cau.dbsul.instagram.entity.feed.FeedCommentEntity;
+import ac.kr.cau.dbsul.instagram.entity.feed.FeedCommentLikeEntity;
 import ac.kr.cau.dbsul.instagram.entity.feed.FeedEntity;
-import ac.kr.cau.dbsul.instagram.repository.FeedCommentRepository;
-import ac.kr.cau.dbsul.instagram.repository.FeedRepository;
-import ac.kr.cau.dbsul.instagram.repository.FollowRepository;
-import ac.kr.cau.dbsul.instagram.repository.UserRepository;
+import ac.kr.cau.dbsul.instagram.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +22,7 @@ public class FeedServiceImpl implements FeedService {
 	private final UserRepository userRepository;
 	private final FeedRepository feedRepository;
 	private final FeedCommentRepository feedCommentRepository;
+	private final FeedCommentLikeRepository feedCommentLikeRepository;
 	private final FollowRepository followRepository;
 
 	@Override
@@ -82,8 +82,18 @@ public class FeedServiceImpl implements FeedService {
 	}
 
 	@Override
-	public String createCommentLike() {
-		return null;
+	public void createCommentLike(FeedCommentLikeDto.Request request) {
+		UserEntity user = userRepository.findById(request.getUserId())
+				.orElseThrow();
+		FeedCommentEntity comment = feedCommentRepository.findById(request.getFeedCommentId())
+				.orElseThrow();
+
+		FeedCommentLikeEntity newLike = FeedCommentLikeEntity.builder()
+				.user(user)
+				.feedComment(comment)
+				.build();
+
+		feedCommentLikeRepository.save(newLike);
 	}
 
 	@Override
