@@ -12,7 +12,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "USER")
-public class UserEntity {
+public class UserEntity extends BaseTimeEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +28,4 @@ public class UserEntity {
 	@Column()
 	private String profileURL;
 
-	@Column(name = "created_at")
-	private Date createdAt;
 }

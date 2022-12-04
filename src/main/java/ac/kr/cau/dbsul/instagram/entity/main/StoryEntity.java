@@ -22,10 +22,7 @@ public class StoryEntity {
 
 	@Column()
 	private String mediaURL;
-
-	@Column(name = "created_at")
-	private Date createdAt;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	private UserEntity user;
