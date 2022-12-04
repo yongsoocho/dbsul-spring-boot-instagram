@@ -23,10 +23,10 @@ public class FeedLocationEntity extends BaseTimeEntity {
     private String alias;
 
     @Column(name = "coordinate_x")
-    private float coordinateX;
+    private double coordinateX;
 
     @Column(name = "coordinate_y")
-    private float coordinateY;
+    private double coordinateY;
 
     @OneToOne
     @JoinColumn(name = "feed_id")
