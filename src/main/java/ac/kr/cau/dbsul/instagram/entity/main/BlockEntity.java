@@ -19,11 +19,11 @@ public class BlockEntity extends BaseTimeEntity {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "blocked_by_id", referencedColumnName = "user_id")
     private UserEntity blockedBy;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private UserEntity blockedTo;
+    @JoinColumn(name = "block_to_id", referencedColumnName = "user_id")
+    private UserEntity blockTo;
 }
