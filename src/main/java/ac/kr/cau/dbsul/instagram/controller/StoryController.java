@@ -2,12 +2,11 @@ package ac.kr.cau.dbsul.instagram.controller;
 
 import ac.kr.cau.dbsul.instagram.service.StoryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RestController(value = "story")
+@RestController()
+@RequestMapping(value = "/story")
 public class StoryController {
 
 	private final StoryService storyService;
@@ -25,37 +24,37 @@ public class StoryController {
 	}
 
 	// 스토리 필터 불러오기
-	@GetMapping()
+	@GetMapping("/filter")
 	public String getStoryFilters() {
 		return storyService.getStoryFilters();
 	}
 
 	// 스토리 하이라이트 생성
-	@PostMapping()
+	@PostMapping("/highlight")
 	public String createHighlight() {
 		return storyService.createHighlight();
 	}
 
 	// 하이라이트에 스토리 추가
-	@PostMapping()
-	public String storyAddToHighlight() {
+	@PostMapping("/highlight/{highlightId}")
+	public String storyAddToHighlight(@PathVariable("highlightId") Long highlightId) {
 		return storyService.storyAddToHighlight();
 	}
 
 	// 스토리 하이라이트 불러오기
-	@GetMapping()
-	public String getStoryHighlight() {
+	@GetMapping("/highlight/{highlightId}")
+	public String getStoryHighlight(@PathVariable("highlightId") Long highlightId) {
 		return storyService.getStoryHighlight();
 	}
 
 	// 스토리 읽기
-	@GetMapping()
+	@GetMapping("/read")
 	public String storyRead() {
 		return storyService.storyRead();
 	}
 
 	// 스토리 좋아요 누르기
-	@PostMapping()
+	@PostMapping("/like")
 	public String likeStory() {
 		return storyService.likeStory();
 	}

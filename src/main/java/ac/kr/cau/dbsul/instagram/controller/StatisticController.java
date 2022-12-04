@@ -4,10 +4,12 @@ import ac.kr.cau.dbsul.instagram.service.StatisticService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
-@RestController(value = "statistic")
+@RestController()
+@RequestMapping(value = "/statistic")
 public class StatisticController {
 
 	private final StatisticService statisticService;
@@ -37,13 +39,13 @@ public class StatisticController {
 	}
 
 	// 사람들이 내 피드 들어와서 하는 행동
-	@GetMapping("/history")
+	@GetMapping("/event")
 	public String getVisitorEvent() {
 		return statisticService.getVisitorEvent();
 	}
 
 	// 사람들이 내 피드 들어와서 하는 행동
-	@PostMapping("/history")
+	@PostMapping("/event")
 	public String createVisitorEvent() {
 		return statisticService.createVisitorEvent();
 	}
