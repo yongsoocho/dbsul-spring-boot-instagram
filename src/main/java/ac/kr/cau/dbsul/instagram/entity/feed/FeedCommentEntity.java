@@ -27,6 +27,9 @@ public class FeedCommentEntity extends BaseTimeEntity {
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private UserEntity user;
 
+    @Column
+    private String content;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "feed_id", referencedColumnName = "feed_id")
     private FeedEntity feed;
