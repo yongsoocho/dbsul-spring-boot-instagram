@@ -9,12 +9,12 @@ public class HashtagDto {
     @Data
     @Builder
     public static class Request {
-
+        private String hashtagName;
     }
 
     @Data
     @Builder
     public static class Response {
-
+        private String hashtagName;
     }
 }
