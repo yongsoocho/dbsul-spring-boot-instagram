@@ -2,11 +2,12 @@ package ac.kr.cau.dbsul.instagram.service;
 
 import ac.kr.cau.dbsul.instagram.dto.FeedDto;
 import ac.kr.cau.dbsul.instagram.repository.FeedRepository;
-import ac.kr.cau.dbsul.instagram.repository.main.FollowRepository;
+import ac.kr.cau.dbsul.instagram.repository.FollowRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -71,12 +72,11 @@ public class FeedServiceImpl implements FeedService {
 	}
 
 	@Override
-	public List<FeedDto> getFeedsByUserFollows(int userId) {
-
-//		followRepository.findAllByFollowedBy_UserId(userId)
-//				.
-		return List.of();
-
+	public List<FeedDto.Response> getFeedsByUserFollows(int userId) {
+		return feedRepository.findFeedsByUserFollowing(userId)
+				.stream()
+				.map(entity -> FeedDto.Response.fromEntity(entity))
+				.collect(Collectors.toList());
 	}
 
 	@Override

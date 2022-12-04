@@ -30,6 +30,7 @@ public class UserDto {
 					.userId(userEntity.getUserId())
 					.nickname(userEntity.getNickname())
 					.profileURL(userEntity.getProfileURL())
+					.lastUpdated(userEntity.getUpdatedAt())
 					.build();
 		}
 	}

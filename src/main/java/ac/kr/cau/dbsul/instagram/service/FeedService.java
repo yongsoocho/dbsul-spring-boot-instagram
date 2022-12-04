@@ -29,5 +29,5 @@ public interface FeedService {
 
 	String createCommentReply();
 
-	List<FeedDto> getFeedsByUserFollows(int userId);
+	List<FeedDto.Response> getFeedsByUserFollows(int userId);
 }

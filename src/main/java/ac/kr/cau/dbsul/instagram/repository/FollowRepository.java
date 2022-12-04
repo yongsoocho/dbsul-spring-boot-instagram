@@ -1,4 +1,4 @@
-package ac.kr.cau.dbsul.instagram.repository.main;
+package ac.kr.cau.dbsul.instagram.repository;
 
 import ac.kr.cau.dbsul.instagram.entity.id.FollowEntityPK;
 import ac.kr.cau.dbsul.instagram.entity.main.FollowEntity;
