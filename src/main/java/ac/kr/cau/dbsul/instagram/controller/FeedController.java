@@ -3,13 +3,11 @@ package ac.kr.cau.dbsul.instagram.controller;
 import ac.kr.cau.dbsul.instagram.service.FeedService;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RestController(value = "feed")
+@RestController()
+@RequestMapping(value = "/feed")
 public class FeedController {
 
 	private final FeedService feedService;
