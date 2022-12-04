@@ -1,18 +1,17 @@
 package ac.kr.cau.dbsul.instagram.controller;
 
 import ac.kr.cau.dbsul.instagram.service.UserService;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@NoArgsConstructor
 @RequiredArgsConstructor
 @RestController(value = "/user")
 public class UserController {
-	private UserService userService;
+
+	private final UserService userService;
 
 	// 로그인
 	@GetMapping()

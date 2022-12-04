@@ -4,7 +4,6 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@NoArgsConstructor
 @RequiredArgsConstructor
 @Service
 public class StatisticServiceImpl implements StatisticService {

@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FollowEntityPK implements Serializable {
-    private Long followTo;
-    private Long followedBy;
+public class DMRoomPK implements Serializable {
+	private Long user;
+	private Long receiveUser;
 }

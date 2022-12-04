@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@NoArgsConstructor
 @RequiredArgsConstructor
 @RestController(value = "/feed")
 public class FeedController {
-	private FeedService feedService;
+
+	private final FeedService feedService;
 
 	// 피드 가져오기
 	@GetMapping()
