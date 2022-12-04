@@ -21,14 +21,14 @@ public class FeedEntity {
 	@Column(name = "feed_id")
 	private Long feedId;
 
-	@Column()
+	@Column(name = "media_url")
 	private String mediaURL;
 
 	@Column()
 	private String content;
 
 	@ManyToOne
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "user_id")
 	private UserEntity user;
 
 }
