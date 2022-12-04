@@ -12,4 +12,39 @@ public class StoryServiceImpl implements StoryService {
 	public String getStories() {
 		return null;
 	}
+
+	@Override
+	public String createStory() {
+		return null;
+	}
+
+	@Override
+	public String getStoryFilters() {
+		return null;
+	}
+
+	@Override
+	public String createHighlight() {
+		return null;
+	}
+
+	@Override
+	public String storyAddToHighlight() {
+		return null;
+	}
+
+	@Override
+	public String getStoryHighlight() {
+		return null;
+	}
+
+	@Override
+	public String storyRead() {
+		return null;
+	}
+
+	@Override
+	public String likeStory() {
+		return null;
+	}
 }
