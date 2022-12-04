@@ -19,13 +19,13 @@ public class DMRoomEntity extends BaseTimeEntity {
 
 	@Id
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
-	private UserEntity user;
+	@JoinColumn(name = "dm_to_id", referencedColumnName = "user_id")
+	private UserEntity dmTo;
 
 	@Id
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "receive_user_id", referencedColumnName = "user_id")
-	private UserEntity receiveUser;
+	@JoinColumn(name = "dm_by_id", referencedColumnName = "user_id")
+	private UserEntity dmBy;
 
 	@Column(length = 255, name = "last_message")
 	private String lastMessage;

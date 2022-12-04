@@ -18,7 +18,7 @@ public class StoryEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "story_id")
-	private Long storyID;
+	private Long storyId;
 
 	@Column(name = "media_url")
 	private String mediaURL;
