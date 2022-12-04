@@ -1,6 +1,7 @@
 package ac.kr.cau.dbsul.instagram.dto;
 
 import ac.kr.cau.dbsul.instagram.entity.feed.FeedCommentEntity;
+import ac.kr.cau.dbsul.instagram.entity.feed.FeedEntity;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,6 +16,7 @@ public class FeedCommentDto {
     @Builder
     public static class Request {
         private Long userId;
+        private Long feedId;
         private String content;
     }
 

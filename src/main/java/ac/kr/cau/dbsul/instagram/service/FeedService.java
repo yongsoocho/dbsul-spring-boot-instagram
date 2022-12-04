@@ -24,7 +24,7 @@ public interface FeedService {
 
 	String getFeedComments();
 
-	String createComment();
+	Long createComment(FeedCommentDto.Request request);
 
 	String createCommentLike();
 
