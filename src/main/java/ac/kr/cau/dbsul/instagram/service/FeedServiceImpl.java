@@ -119,7 +119,7 @@ public class FeedServiceImpl implements FeedService {
 	}
 
 	@Override
-	public List<FeedDto.Response> getFeedsByUserFollows(int userId) {
+	public List<FeedDto.Response> getFeedsByUserFollows(Long userId) {
 		return feedRepository.findFeedsByUserFollowing(userId)
 				.stream()
 				.map(FeedDto.Response::fromEntity)
@@ -127,7 +127,7 @@ public class FeedServiceImpl implements FeedService {
 	}
 
 	@Override
-	public List<FeedCommentDto.Response> getFeedCommentsByFeedId(int feedId) {
+	public List<FeedCommentDto.Response> getFeedCommentsByFeedId(Long feedId) {
 		return feedCommentRepository.findAllByFeed_FeedId(feedId)
 				.stream()
 				.map(FeedCommentDto.Response::fromEntity)
