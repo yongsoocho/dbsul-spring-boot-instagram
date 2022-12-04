@@ -20,11 +20,11 @@ public class StoryEntity {
 	@Column(name = "story_id")
 	private Long storyID;
 
-	@Column()
+	@Column(name = "media_url")
 	private String mediaURL;
 	
 	@ManyToOne
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "user_id")
 	private UserEntity user;
 
 }
