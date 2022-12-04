@@ -4,12 +4,15 @@ import ac.kr.cau.dbsul.instagram.dto.UserDto;
 import ac.kr.cau.dbsul.instagram.entity.UserEntity;
 import ac.kr.cau.dbsul.instagram.entity.feed.FeedCommentEntity;
 import ac.kr.cau.dbsul.instagram.entity.feed.FeedEntity;
+import ac.kr.cau.dbsul.instagram.entity.main.FollowEntity;
 import ac.kr.cau.dbsul.instagram.entity.story.StoryEntity;
 import ac.kr.cau.dbsul.instagram.entity.story.StoryReadEntity;
 import ac.kr.cau.dbsul.instagram.repository.*;
 import lombok.RequiredArgsConstructor;
 import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @Service
@@ -20,6 +23,7 @@ public class UserServiceImpl implements UserService {
 	private final StoryRepository storyRepository;
 	private final CommentRepository commentRepository;
 	private final StoryReadRepository storyReadRepository;
+	private final FollowRepository followRepository;
 
 	@Override
 	public String userLogin() {
@@ -72,6 +76,25 @@ public class UserServiceImpl implements UserService {
 			storyReadRepository.save(newStoryRead);
 		}
 
+		//
+		for (int k = 1; k < 11; k++) {
+			UserEntity followed = userRepository.findById(Long.valueOf(k)).orElseThrow();
+
+			for (int z = 1; z < 11; z++) {
+				if (!Objects.equals(followed.getUserId(), Long.valueOf(z))) {
+					if (Math.random() > 0.25) {
+						UserEntity followTo = userRepository.findById(Long.valueOf(z)).orElseThrow();
+
+						FollowEntity newFollow = FollowEntity.builder()
+								.followTo(followTo)
+								.followedBy(followed)
+								.build();
+
+						followRepository.save(newFollow);
+					}
+				}
+			}
+		}
 
 		return "hello world";
 	}
