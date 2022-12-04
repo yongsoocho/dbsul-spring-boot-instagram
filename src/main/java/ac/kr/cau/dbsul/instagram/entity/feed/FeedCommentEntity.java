@@ -6,6 +6,8 @@ import ac.kr.cau.dbsul.instagram.entity.id.FeedCommentEntityPK;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @ToString
@@ -26,5 +28,8 @@ public class FeedCommentEntity extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "feed_id", referencedColumnName = "feed_id")
     private FeedEntity feed;
+
+    @OneToMany(mappedBy = "feedComment")
+    private List<FeedCommentLikeEntity> likes = new ArrayList<>();
 
 }
