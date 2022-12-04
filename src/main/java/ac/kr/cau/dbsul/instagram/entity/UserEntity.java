@@ -27,7 +27,7 @@ public class UserEntity extends BaseTimeEntity {
 	@Column(length = 50, nullable = false)
 	private String email;
 
-	@Column(length = 20, nullable = false, unique = true)
+	@Column(length = 20, nullable = false)
 	private String nickname;
 
 	@Column(name = "profile_url")
