@@ -1,14 +1,8 @@
 package ac.kr.cau.dbsul.instagram.service;
 
-import ac.kr.cau.dbsul.instagram.dto.FeedCommentDto;
-import ac.kr.cau.dbsul.instagram.dto.FeedCommentLikeDto;
-import ac.kr.cau.dbsul.instagram.dto.FeedCommentReplyDto;
-import ac.kr.cau.dbsul.instagram.dto.FeedDto;
+import ac.kr.cau.dbsul.instagram.dto.*;
 import ac.kr.cau.dbsul.instagram.entity.UserEntity;
-import ac.kr.cau.dbsul.instagram.entity.feed.FeedCommentEntity;
-import ac.kr.cau.dbsul.instagram.entity.feed.FeedCommentLikeEntity;
-import ac.kr.cau.dbsul.instagram.entity.feed.FeedCommentReplyEntity;
-import ac.kr.cau.dbsul.instagram.entity.feed.FeedEntity;
+import ac.kr.cau.dbsul.instagram.entity.feed.*;
 import ac.kr.cau.dbsul.instagram.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,19 +17,25 @@ public class FeedServiceImpl implements FeedService {
 
 	private final UserRepository userRepository;
 	private final FeedRepository feedRepository;
+	private final FeedLikeRepository feedLikeRepository;
 	private final FeedCommentRepository feedCommentRepository;
 	private final FeedCommentLikeRepository feedCommentLikeRepository;
 	private final FeedCommentReplyRepository feedCommentReplyRepository;
 	private final FollowRepository followRepository;
 
 	@Override
-	public String getFeedDetails() {
-		return null;
-	}
+	public Long createFeed(FeedDto.Request request) {
+		UserEntity writer = userRepository.findById(request.getUserId())
+				.orElseThrow();
 
-	@Override
-	public String createFeed() {
-		return null;
+		FeedEntity newFeed = FeedEntity.builder()
+				.mediaURL(request.getMediaUrl())
+				.content(request.getContent())
+				.user(writer)
+				.build();
+
+		feedRepository.save(newFeed);
+		return newFeed.getFeedId();
 	}
 
 	@Override
@@ -53,19 +53,21 @@ public class FeedServiceImpl implements FeedService {
 		return null;
 	}
 
-	@Override
-	public String getFeedLikes() {
-		return null;
-	}
 
 	@Override
-	public String createFeedLike() {
-		return null;
-	}
+	public void createFeedLike(FeedLikeDto.Request request) {
+		UserEntity user = userRepository.findById(request.getUserId())
+				.orElseThrow();
+		FeedEntity feed = feedRepository.findById(request.getFeedId())
+				.orElseThrow();
 
-	@Override
-	public String getFeedComments() {
-		return null;
+		FeedLikeEntity newLike = FeedLikeEntity
+				.builder()
+				.user(user)
+				.feed(feed)
+				.build();
+
+		feedLikeRepository.save(newLike);
 	}
 
 	@Override
@@ -132,8 +134,4 @@ public class FeedServiceImpl implements FeedService {
 				.collect(Collectors.toList());
 	}
 
-	@Override
-	public String getFeeds() {
-		return "hello world";
-	}
 }
