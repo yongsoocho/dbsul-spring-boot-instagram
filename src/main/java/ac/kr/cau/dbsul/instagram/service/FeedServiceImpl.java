@@ -2,10 +2,12 @@ package ac.kr.cau.dbsul.instagram.service;
 
 import ac.kr.cau.dbsul.instagram.dto.FeedCommentDto;
 import ac.kr.cau.dbsul.instagram.dto.FeedCommentLikeDto;
+import ac.kr.cau.dbsul.instagram.dto.FeedCommentReplyDto;
 import ac.kr.cau.dbsul.instagram.dto.FeedDto;
 import ac.kr.cau.dbsul.instagram.entity.UserEntity;
 import ac.kr.cau.dbsul.instagram.entity.feed.FeedCommentEntity;
 import ac.kr.cau.dbsul.instagram.entity.feed.FeedCommentLikeEntity;
+import ac.kr.cau.dbsul.instagram.entity.feed.FeedCommentReplyEntity;
 import ac.kr.cau.dbsul.instagram.entity.feed.FeedEntity;
 import ac.kr.cau.dbsul.instagram.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,7 @@ public class FeedServiceImpl implements FeedService {
 	private final FeedRepository feedRepository;
 	private final FeedCommentRepository feedCommentRepository;
 	private final FeedCommentLikeRepository feedCommentLikeRepository;
+	private final FeedCommentReplyRepository feedCommentReplyRepository;
 	private final FollowRepository followRepository;
 
 	@Override
@@ -97,8 +100,20 @@ public class FeedServiceImpl implements FeedService {
 	}
 
 	@Override
-	public String createCommentReply() {
-		return null;
+	public Long createCommentReply(FeedCommentReplyDto.Request request) {
+		FeedCommentEntity comment = feedCommentRepository.findById(request.getFeedCommentId())
+				.orElseThrow();
+		UserEntity writer = userRepository.findById(request.getUserId())
+				.orElseThrow();
+
+		FeedCommentReplyEntity newReply = FeedCommentReplyEntity.builder()
+				.feedComment(comment)
+				.user(writer)
+				.content(request.getContent())
+				.build();
+
+		feedCommentReplyRepository.save(newReply);
+		return newReply.getFeedCommentReplyId();
 	}
 
 	@Override

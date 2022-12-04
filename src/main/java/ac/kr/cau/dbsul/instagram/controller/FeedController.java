@@ -2,6 +2,7 @@ package ac.kr.cau.dbsul.instagram.controller;
 
 import ac.kr.cau.dbsul.instagram.dto.FeedCommentDto;
 import ac.kr.cau.dbsul.instagram.dto.FeedCommentLikeDto;
+import ac.kr.cau.dbsul.instagram.dto.FeedCommentReplyDto;
 import ac.kr.cau.dbsul.instagram.service.FeedService;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -71,8 +72,7 @@ public class FeedController {
 	@PostMapping("/comment")
 	public String createComment(
 			@RequestBody FeedCommentDto.Request request) {
-		return feedService.createComment(request)
-				.toString();
+		return feedService.createComment(request).toString();
 	}
 
 	// 댓글에 좋아요
@@ -86,7 +86,9 @@ public class FeedController {
 
 	// 대댓글 달기
 	@PostMapping("/comment/{commentId}")
-	public String createCommentReply() {
-		return feedService.createCommentReply();
+	public String createCommentReply(
+			@RequestBody FeedCommentReplyDto.Request request
+			) {
+		return feedService.createCommentReply(request).toString();
 	}
 }
