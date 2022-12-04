@@ -11,7 +11,7 @@ public interface StoryRepository extends JpaRepository<StoryEntity, Long> {
 
 	@Query(value = "" +
 			"SELECT * " +
-			"FROM story" +
+			"FROM story AS s" +
 			"", nativeQuery = true)
 	List<StoryEntity> getStories();
 
