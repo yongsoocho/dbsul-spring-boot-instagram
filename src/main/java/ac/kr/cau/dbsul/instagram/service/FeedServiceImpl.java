@@ -119,6 +119,16 @@ public class FeedServiceImpl implements FeedService {
 	}
 
 	@Override
+	public List<FeedDto.Response> getFeedsByUserFollows(Long userId) {
+		return null;
+	}
+
+	@Override
+	public List<FeedCommentDto.Response> getFeedCommentsByFeedId(Long feedId) {
+		return null;
+	}
+
+	@Override
 	public List<FeedDto.Response> getFeedsByUserFollows(int userId) {
 		return feedRepository.findFeedsByUserFollowing(userId)
 				.stream()
