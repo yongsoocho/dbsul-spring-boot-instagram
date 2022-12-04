@@ -1,6 +1,8 @@
 package ac.kr.cau.dbsul.instagram.service;
 
+import ac.kr.cau.dbsul.instagram.dto.FeedCommentDto;
 import ac.kr.cau.dbsul.instagram.dto.FeedDto;
+import ac.kr.cau.dbsul.instagram.repository.FeedCommentRepository;
 import ac.kr.cau.dbsul.instagram.repository.FeedRepository;
 import ac.kr.cau.dbsul.instagram.repository.FollowRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ import java.util.stream.Collectors;
 public class FeedServiceImpl implements FeedService {
 
 	private final FeedRepository feedRepository;
+	private final FeedCommentRepository feedCommentRepository;
 	private final FollowRepository followRepository;
 
 	@Override
@@ -76,6 +79,14 @@ public class FeedServiceImpl implements FeedService {
 		return feedRepository.findFeedsByUserFollowing(userId)
 				.stream()
 				.map(entity -> FeedDto.Response.fromEntity(entity))
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public List<FeedCommentDto.Response> getFeedCommentsByFeedId(int feedId) {
+		return feedCommentRepository.findAllByFeed_FeedId(feedId)
+				.stream()
+				.map(FeedCommentDto.Response::fromEntity)
 				.collect(Collectors.toList());
 	}
 
