@@ -1,10 +1,12 @@
 package ac.kr.cau.dbsul.instagram.dto;
 
+import ac.kr.cau.dbsul.instagram.entity.feed.FeedCommentEntity;
 import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 public class FeedCommentDto {
@@ -23,5 +25,20 @@ public class FeedCommentDto {
         private String content;
         private List<FeedCommentReplyDto.Response> replies;
         private LocalDateTime lastUpdated;
+
+        public static Response fromEntity(FeedCommentEntity feedCommentEntity) {
+            List<FeedCommentReplyDto.Response> replies =
+                    feedCommentEntity.getReplies()
+                            .stream()
+                            .map(FeedCommentReplyDto.Response::fromEntity)
+                            .collect(Collectors.toList());
+
+            return Response.builder()
+                    .feedCommentId(feedCommentEntity.getFeedCommentId())
+                    .content(feedCommentEntity.getFeed().getContent())
+                    .replies(replies)
+                    .lastUpdated(feedCommentEntity.getUpdatedAt())
+                    .build();
+        }
     }
 }

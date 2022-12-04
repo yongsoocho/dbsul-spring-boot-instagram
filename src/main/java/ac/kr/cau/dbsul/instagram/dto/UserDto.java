@@ -4,6 +4,8 @@ import ac.kr.cau.dbsul.instagram.entity.UserEntity;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class UserDto {
 
@@ -21,12 +23,14 @@ public class UserDto {
 		private Long userId;
 		private String nickname;
 		private String profileURL;
+		private LocalDateTime lastUpdated;
 
 		public static UserDto.Response fromEntity(UserEntity userEntity) {
 			return Response.builder()
 					.userId(userEntity.getUserId())
 					.nickname(userEntity.getNickname())
 					.profileURL(userEntity.getProfileURL())
+					.lastUpdated(userEntity.getUpdatedAt())
 					.build();
 		}
 	}

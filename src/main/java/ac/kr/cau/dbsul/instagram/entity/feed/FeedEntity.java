@@ -1,5 +1,7 @@
 package ac.kr.cau.dbsul.instagram.entity.feed;
 
+import ac.kr.cau.dbsul.instagram.dto.FeedLocationDto;
+import ac.kr.cau.dbsul.instagram.entity.BaseTimeEntity;
 import ac.kr.cau.dbsul.instagram.entity.UserEntity;
 import lombok.*;
 
@@ -15,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "FEED")
-public class FeedEntity {
+public class FeedEntity extends BaseTimeEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,4 +52,7 @@ public class FeedEntity {
 	@OneToMany(mappedBy = "feed")
 	private List<FeedHashtagEntity> hashtags = new ArrayList<>();
 
+	@OneToOne
+	@JoinColumn(name = "feed_location_id")
+	private FeedLocationEntity feedLocation;
 }

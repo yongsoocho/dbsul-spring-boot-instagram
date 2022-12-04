@@ -1,5 +1,6 @@
 package ac.kr.cau.dbsul.instagram.dto;
 
+import ac.kr.cau.dbsul.instagram.entity.feed.FeedCommentReplyEntity;
 import lombok.Builder;
 import lombok.Data;
 
@@ -22,5 +23,13 @@ public class FeedCommentReplyDto {
         private Long feedCommentReplyId;
         private String content;
         private LocalDateTime lastUpdated;
+
+        public static Response fromEntity(FeedCommentReplyEntity entity) {
+            return Response.builder()
+                    .feedCommentReplyId(entity.getFeedCommentReplyId())
+                    .content(entity.getContent())
+                    .lastUpdated(entity.getUpdatedAt())
+                    .build();
+        }
     }
 }
