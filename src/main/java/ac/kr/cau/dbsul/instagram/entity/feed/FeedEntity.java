@@ -4,6 +4,7 @@ import ac.kr.cau.dbsul.instagram.entity.UserEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,11 +25,29 @@ public class FeedEntity {
 	@Column(name = "media_url")
 	private String mediaURL;
 
-	@Column()
+	@Column
 	private String content;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private UserEntity user;
+
+	@OneToMany(mappedBy = "feed")
+	private List<FeedTagEntity> tags = new ArrayList<>();
+
+	@OneToMany(mappedBy = "feed")
+	private List<FeedClippingEntity> clippings = new ArrayList<>();
+
+	@OneToMany(mappedBy = "feed")
+	private List<FeedLikeEntity> likes = new ArrayList<>();
+
+	@OneToMany(mappedBy = "feed")
+	private List<FeedReportEntity> reports = new ArrayList<>();
+
+	@OneToMany(mappedBy = "feed")
+	private List<FeedCommentEntity> comments = new ArrayList<>();
+
+	@OneToMany(mappedBy = "feed")
+	private List<FeedHashtagEntity> hashtags = new ArrayList<>();
 
 }
