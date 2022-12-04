@@ -2,7 +2,6 @@ package ac.kr.cau.dbsul.instagram.entity.main;
 
 import ac.kr.cau.dbsul.instagram.entity.BaseTimeEntity;
 import ac.kr.cau.dbsul.instagram.entity.UserEntity;
-import ac.kr.cau.dbsul.instagram.entity.id.DMRoomPK;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,7 +13,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "DM_MESSAGE")
-@IdClass(DMRoomPK.class)
 public class DMMessageEntity extends BaseTimeEntity {
 
 	@Id
@@ -28,8 +26,8 @@ public class DMMessageEntity extends BaseTimeEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumns({
-			@JoinColumn(name = "dm_room_id", referencedColumnName = "user_id"),
-			@JoinColumn(name = "dm_room_id", referencedColumnName = "user_id")
+			@JoinColumn(name = "dm_to_id", referencedColumnName = "dm_to_id"),
+			@JoinColumn(name = "dm_by_id", referencedColumnName = "dm_by_id")
 	})
 	private DMRoomEntity dmRoom;
 

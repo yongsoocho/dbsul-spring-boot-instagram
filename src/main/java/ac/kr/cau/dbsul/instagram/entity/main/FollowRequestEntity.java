@@ -2,7 +2,6 @@ package ac.kr.cau.dbsul.instagram.entity.main;
 
 import ac.kr.cau.dbsul.instagram.entity.BaseTimeEntity;
 import ac.kr.cau.dbsul.instagram.entity.UserEntity;
-import ac.kr.cau.dbsul.instagram.entity.id.BlockEntityPK;
 import ac.kr.cau.dbsul.instagram.entity.id.FollowRequestEntityPK;
 import lombok.*;
 

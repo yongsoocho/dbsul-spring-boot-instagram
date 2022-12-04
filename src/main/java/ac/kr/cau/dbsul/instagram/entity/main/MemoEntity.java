@@ -3,7 +3,6 @@ package ac.kr.cau.dbsul.instagram.entity.main;
 import ac.kr.cau.dbsul.instagram.entity.BaseTimeEntity;
 import ac.kr.cau.dbsul.instagram.entity.UserEntity;
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
