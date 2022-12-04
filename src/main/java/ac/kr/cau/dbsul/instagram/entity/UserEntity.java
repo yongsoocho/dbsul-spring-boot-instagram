@@ -1,9 +1,12 @@
 package ac.kr.cau.dbsul.instagram.entity;
 
+import ac.kr.cau.dbsul.instagram.entity.main.FollowEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @ToString
@@ -27,5 +30,11 @@ public class UserEntity extends BaseTimeEntity {
 
 	@Column(name = "profile_url")
 	private String profileURL;
+
+	@OneToMany(mappedBy = "followTo")
+	private List<FollowEntity> followings = new ArrayList<>();
+
+	@OneToMany(mappedBy = "followedBy")
+	private List<FollowEntity> followers = new ArrayList<>();
 
 }
