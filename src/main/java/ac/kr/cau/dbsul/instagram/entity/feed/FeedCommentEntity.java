@@ -31,6 +31,9 @@ public class FeedCommentEntity extends BaseTimeEntity {
     @JoinColumn(name = "feed_id", referencedColumnName = "feed_id")
     private FeedEntity feed;
 
+    @Column()
+    private String content;
+
     @OneToMany(mappedBy = "feedComment")
     private List<FeedCommentLikeEntity> likes = new ArrayList<>();
 
