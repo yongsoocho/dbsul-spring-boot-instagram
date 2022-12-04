@@ -1,9 +1,6 @@
 package ac.kr.cau.dbsul.instagram.service;
 
-import ac.kr.cau.dbsul.instagram.dto.FeedCommentDto;
-import ac.kr.cau.dbsul.instagram.dto.FeedCommentLikeDto;
-import ac.kr.cau.dbsul.instagram.dto.FeedCommentReplyDto;
-import ac.kr.cau.dbsul.instagram.dto.FeedDto;
+import ac.kr.cau.dbsul.instagram.dto.*;
 
 import java.util.List;
 
@@ -22,7 +19,7 @@ public interface FeedService {
 
 	String getFeedLikes();
 
-	String createFeedLike();
+	void createFeedLike(FeedLikeDto.Request request);
 
 	String getFeedComments();
 

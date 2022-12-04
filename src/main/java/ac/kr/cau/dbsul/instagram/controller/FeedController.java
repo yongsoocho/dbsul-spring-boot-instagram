@@ -3,6 +3,7 @@ package ac.kr.cau.dbsul.instagram.controller;
 import ac.kr.cau.dbsul.instagram.dto.FeedCommentDto;
 import ac.kr.cau.dbsul.instagram.dto.FeedCommentLikeDto;
 import ac.kr.cau.dbsul.instagram.dto.FeedCommentReplyDto;
+import ac.kr.cau.dbsul.instagram.dto.FeedLikeDto;
 import ac.kr.cau.dbsul.instagram.service.FeedService;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -58,8 +59,10 @@ public class FeedController {
 
 	// 피드 좋아요
 	@PostMapping("/like")
-	public String createFeedLike() {
-		return feedService.createFeedLike();
+	public void createFeedLike(
+			@RequestBody FeedLikeDto.Request request
+			) {
+		feedService.createFeedLike(request);
 	}
 
 	// 댓글 목록
