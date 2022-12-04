@@ -10,6 +10,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DMRoomPK implements Serializable {
-	private Long user;
-	private Long receiveUser;
+	private Long dmTo;
+	private Long dmBy;
 }
