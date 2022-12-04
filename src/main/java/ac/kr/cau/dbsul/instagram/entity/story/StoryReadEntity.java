@@ -24,7 +24,7 @@ public class StoryReadEntity extends BaseTimeEntity {
 
 	@Id
 	@ManyToOne()
-	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
+	@JoinColumn(name = "story_id", referencedColumnName = "story_id")
 	private StoryEntity story;
 
 }
