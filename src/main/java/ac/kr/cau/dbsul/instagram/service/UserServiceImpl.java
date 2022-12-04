@@ -4,6 +4,7 @@ import ac.kr.cau.dbsul.instagram.dto.UserDto;
 import ac.kr.cau.dbsul.instagram.entity.UserEntity;
 import ac.kr.cau.dbsul.instagram.entity.feed.FeedCommentEntity;
 import ac.kr.cau.dbsul.instagram.entity.feed.FeedEntity;
+import ac.kr.cau.dbsul.instagram.entity.feed.FeedLocationEntity;
 import ac.kr.cau.dbsul.instagram.entity.main.FollowEntity;
 import ac.kr.cau.dbsul.instagram.entity.story.StoryEntity;
 import ac.kr.cau.dbsul.instagram.entity.story.StoryReadEntity;
@@ -24,6 +25,7 @@ public class UserServiceImpl implements UserService {
 	private final CommentRepository commentRepository;
 	private final StoryReadRepository storyReadRepository;
 	private final FollowRepository followRepository;
+	private final FeedLocationRepository feedLocationRepository;
 
 	@Override
 	public String userLogin() {
@@ -40,6 +42,15 @@ public class UserServiceImpl implements UserService {
 				FeedEntity newFeed = FeedEntity.builder().mediaURL(faker.aws().albARN()).content(faker.funnyName().name()).user(newUser).build();
 
 				feedRepository.save(newFeed);
+
+				FeedLocationEntity newFeedLocation = FeedLocationEntity.builder()
+						.alias(faker.country().name())
+						.coordinateX(faker.number().randomDouble(7, 37, 38))
+						.coordinateY(faker.number().randomDouble(8, 127, 128))
+						.feed(newFeed)
+						.build();
+
+				feedLocationRepository.save(newFeedLocation);
 
 				StoryEntity newStory = StoryEntity.builder().mediaURL(faker.aws().albARN()).user(newUser).build();
 

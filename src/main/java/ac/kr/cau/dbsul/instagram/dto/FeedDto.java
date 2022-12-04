@@ -37,9 +37,6 @@ public class FeedDto {
             UserDto.Response writer = UserDto.Response.fromEntity(
                     feedEntity.getUser()
             );
-            FeedLocationDto.Response location = FeedLocationDto.Response.fromEntity(
-                    feedEntity.getFeedLocation()
-            );
             List<UserDto.Response> taggedUsers = feedEntity.getTags()
                     .stream()
                     .map(feedTagEntity ->
@@ -61,7 +58,6 @@ public class FeedDto {
                     .content(feedEntity.getContent())
                     .likes(likes)
                     .clippings(clippings)
-                    .location(location)
                     .taggedUsers(taggedUsers)
                     .hashtags(hashtags)
                     .lastUpdated(feedEntity.getUpdatedAt())
