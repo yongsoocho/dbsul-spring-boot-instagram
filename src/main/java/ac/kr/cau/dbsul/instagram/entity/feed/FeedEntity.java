@@ -1,4 +1,4 @@
-package ac.kr.cau.dbsul.instagram.entity.main;
+package ac.kr.cau.dbsul.instagram.entity.feed;
 
 import ac.kr.cau.dbsul.instagram.entity.UserEntity;
 import lombok.*;
