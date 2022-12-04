@@ -2,15 +2,16 @@ package ac.kr.cau.dbsul.instagram.entity;
 
 import ac.kr.cau.dbsul.instagram.entity.feed.FeedEntity;
 import ac.kr.cau.dbsul.instagram.entity.main.FollowEntity;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Getter
-@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

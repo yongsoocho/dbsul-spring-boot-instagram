@@ -1,9 +1,13 @@
 package ac.kr.cau.dbsul.instagram.service;
 
-public interface StoryService {
-	String getStories();
+import ac.kr.cau.dbsul.instagram.dto.StoryDto;
 
-	String createStory();
+import java.util.List;
+
+public interface StoryService {
+	List<StoryDto.Response> getStories();
+
+	StoryDto.Response createStory(StoryDto.Request request);
 
 	String getStoryFilters();
 

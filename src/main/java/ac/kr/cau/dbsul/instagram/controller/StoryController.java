@@ -1,8 +1,11 @@
 package ac.kr.cau.dbsul.instagram.controller;
 
+import ac.kr.cau.dbsul.instagram.dto.StoryDto;
 import ac.kr.cau.dbsul.instagram.service.StoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController()
@@ -13,14 +16,14 @@ public class StoryController {
 
 	// 스토리 불러오기
 	@GetMapping()
-	public String getStories() {
+	public List<StoryDto.Response> getStories() {
 		return storyService.getStories();
 	}
 
 	// 스토리 생성
 	@PostMapping()
-	public String createStory() {
-		return storyService.createStory();
+	public StoryDto.Response createStory(@RequestBody() StoryDto.Request request) {
+		return storyService.createStory(request);
 	}
 
 	// 스토리 필터 불러오기

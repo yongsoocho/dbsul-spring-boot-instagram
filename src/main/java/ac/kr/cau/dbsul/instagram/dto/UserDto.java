@@ -1,11 +1,10 @@
 package ac.kr.cau.dbsul.instagram.dto;
 
+import ac.kr.cau.dbsul.instagram.entity.UserEntity;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 public class UserDto {
@@ -22,10 +21,17 @@ public class UserDto {
 	@Builder
 	public static class Response {
 		private Long userId;
-		private String email;
 		private String nickname;
 		private String profileURL;
 		private LocalDateTime lastUpdated;
+
+		public static UserDto.Response fromEntity(UserEntity userEntity) {
+			return Response.builder()
+					.userId(userEntity.getUserId())
+					.nickname(userEntity.getNickname())
+					.profileURL(userEntity.getProfileURL())
+					.build();
+		}
 	}
 
 }

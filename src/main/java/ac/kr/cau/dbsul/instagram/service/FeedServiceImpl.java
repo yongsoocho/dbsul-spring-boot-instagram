@@ -73,6 +73,9 @@ public class FeedServiceImpl implements FeedService {
 	@Override
 	public List<FeedDto> getFeedsByUserFollows(int userId) {
 
+//		followRepository.findAllByFollowedBy_UserId(userId)
+//				.
+		return List.of();
 
 	}
 

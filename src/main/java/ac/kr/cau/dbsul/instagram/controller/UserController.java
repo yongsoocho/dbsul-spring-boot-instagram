@@ -1,5 +1,6 @@
 package ac.kr.cau.dbsul.instagram.controller;
 
+import ac.kr.cau.dbsul.instagram.dto.UserDto;
 import ac.kr.cau.dbsul.instagram.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,8 @@ public class UserController {
 
 	// 회원가입
 	@PostMapping()
-	public String registerUser() {
-		return userService.registerUser();
+	public UserDto.Response registerUser(@RequestBody() UserDto.Request request) {
+		return userService.registerUser(request);
 	}
 
 	// 팔로워 불러오기
