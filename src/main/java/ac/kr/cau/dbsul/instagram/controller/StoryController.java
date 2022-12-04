@@ -2,6 +2,7 @@ package ac.kr.cau.dbsul.instagram.controller;
 
 import ac.kr.cau.dbsul.instagram.dto.StoryDto;
 import ac.kr.cau.dbsul.instagram.dto.StoryReadDto;
+import ac.kr.cau.dbsul.instagram.entity.story.StoryReadEntity;
 import ac.kr.cau.dbsul.instagram.service.StoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +54,7 @@ public class StoryController {
 
 	// 스토리 읽기
 	@PostMapping("/read")
-	public String storyRead(@RequestBody() StoryReadDto.Request request) {
+	public StoryReadEntity storyRead(@RequestBody() StoryReadDto.Request request) {
 		return storyService.storyRead(request);
 	}
 

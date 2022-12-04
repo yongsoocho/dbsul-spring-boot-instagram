@@ -68,7 +68,7 @@ public class StoryServiceImpl implements StoryService {
 	}
 
 	@Override
-	public String storyRead(StoryReadDto.Request request) {
+	public StoryReadEntity storyRead(StoryReadDto.Request request) {
 		StoryEntity exStory = storyRepository.findById(request.getStoryId()).orElseThrow();
 
 		UserEntity exUser = userRepository.findById(request.getUserId()).orElseThrow();
@@ -80,7 +80,7 @@ public class StoryServiceImpl implements StoryService {
 
 		storyReadRepository.save(newStoryRead);
 
-		return newStoryRead
+		return newStoryRead;
 	}
 
 	@Override
