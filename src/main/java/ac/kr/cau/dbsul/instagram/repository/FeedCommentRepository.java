@@ -9,5 +9,5 @@ import java.util.List;
 public interface FeedCommentRepository extends JpaRepository<FeedCommentEntity, Long> {
 
     @EntityGraph(attributePaths = {"feed"})
-    List<FeedCommentEntity> findAllByFeed_FeedId(int feedId);
+    List<FeedCommentEntity> findAllByFeed_FeedId(Long feedId);
 }
