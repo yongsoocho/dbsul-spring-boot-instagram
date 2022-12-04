@@ -24,13 +24,18 @@ public class FeedServiceImpl implements FeedService {
 	private final FollowRepository followRepository;
 
 	@Override
-	public String getFeedDetails() {
-		return null;
-	}
+	public Long createFeed(FeedDto.Request request) {
+		UserEntity writer = userRepository.findById(request.getUserId())
+				.orElseThrow();
 
-	@Override
-	public String createFeed() {
-		return null;
+		FeedEntity newFeed = FeedEntity.builder()
+				.mediaURL(request.getMediaUrl())
+				.content(request.getContent())
+				.user(writer)
+				.build();
+
+		feedRepository.save(newFeed);
+		return newFeed.getFeedId();
 	}
 
 	@Override
@@ -48,10 +53,6 @@ public class FeedServiceImpl implements FeedService {
 		return null;
 	}
 
-	@Override
-	public String getFeedLikes() {
-		return null;
-	}
 
 	@Override
 	public void createFeedLike(FeedLikeDto.Request request) {
@@ -133,8 +134,4 @@ public class FeedServiceImpl implements FeedService {
 				.collect(Collectors.toList());
 	}
 
-	@Override
-	public String getFeeds() {
-		return "hello world";
-	}
 }

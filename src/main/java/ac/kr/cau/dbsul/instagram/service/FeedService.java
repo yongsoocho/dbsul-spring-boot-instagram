@@ -5,11 +5,8 @@ import ac.kr.cau.dbsul.instagram.dto.*;
 import java.util.List;
 
 public interface FeedService {
-	String getFeeds();
 
-	String getFeedDetails();
-
-	String createFeed();
+	Long createFeed(FeedDto.Request request);
 
 	String searchFeedByTag();
 
@@ -17,11 +14,7 @@ public interface FeedService {
 
 	String createFeedClipping();
 
-	String getFeedLikes();
-
 	void createFeedLike(FeedLikeDto.Request request);
-
-	String getFeedComments();
 
 	Long createComment(FeedCommentDto.Request request);
 
@@ -29,6 +22,6 @@ public interface FeedService {
 
 	Long createCommentReply(FeedCommentReplyDto.Request request);
 
-	List<FeedDto.Response> getFeedsByUserFollows(int userId);
-	List<FeedCommentDto.Response> getFeedCommentsByFeedId(int feedId);
+	List<FeedDto.Response> getFeedsByUserFollows(Long userId);
+	List<FeedCommentDto.Response> getFeedCommentsByFeedId(Long feedId);
 }

@@ -53,6 +53,6 @@ public class FeedEntity extends BaseTimeEntity {
 	private List<FeedHashtagEntity> hashtags = new ArrayList<>();
 
 	@OneToOne
-	@JoinColumn(name = "feed_location_id")
+	@JoinColumn(name = "feed_location_id", nullable = true)
 	private FeedLocationEntity feedLocation;
 }

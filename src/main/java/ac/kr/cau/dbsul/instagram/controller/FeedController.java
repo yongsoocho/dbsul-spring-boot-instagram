@@ -1,13 +1,11 @@
 package ac.kr.cau.dbsul.instagram.controller;
 
-import ac.kr.cau.dbsul.instagram.dto.FeedCommentDto;
-import ac.kr.cau.dbsul.instagram.dto.FeedCommentLikeDto;
-import ac.kr.cau.dbsul.instagram.dto.FeedCommentReplyDto;
-import ac.kr.cau.dbsul.instagram.dto.FeedLikeDto;
+import ac.kr.cau.dbsul.instagram.dto.*;
 import ac.kr.cau.dbsul.instagram.service.FeedService;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController()
@@ -16,22 +14,18 @@ public class FeedController {
 
 	private final FeedService feedService;
 
-	// 피드 가져오기
-	@GetMapping()
-	public String getFeeds() {
-		return feedService.getFeeds();
-	}
-
-	// 피드 상세 가져오기
-	@GetMapping("/{feedId}")
-	public String getFeedDetails(@PathVariable("feedId") Long feedId) {
-		return feedService.getFeedDetails();
+	// 내가 팔로우하는 사람들의 피드목록
+	@GetMapping("/user/{userId}")
+	public List<FeedDto.Response> getFeeds(@PathVariable("userId") Long userId) {
+		return feedService.getFeedsByUserFollows(userId);
 	}
 
 	// 피드 생성
 	@PostMapping()
-	public String createFeed() {
-		return feedService.createFeed();
+	public String createFeed(
+			@RequestBody FeedDto.Request request
+	) {
+		return feedService.createFeed(request).toString();
 	}
 
 	// 피드 태그 검색
@@ -51,24 +45,19 @@ public class FeedController {
 		return feedService.createFeedClipping();
 	}
 
-	// 피드 좋아요 목록
-	@GetMapping("/like/{feedId}")
-	public String getFeedLikes(@PathVariable("feedId") Long feeId) {
-		return feedService.getFeedLikes();
-	}
-
 	// 피드 좋아요
 	@PostMapping("/like")
-	public void createFeedLike(
+	public String createFeedLike(
 			@RequestBody FeedLikeDto.Request request
 			) {
 		feedService.createFeedLike(request);
+		return "success";
 	}
 
 	// 댓글 목록
 	@GetMapping("/comment/{feedId}")
-	public String getFeedComments(@PathVariable("feedId") Long feeId) {
-		return feedService.getFeedComments();
+	public List<FeedCommentDto.Response> getFeedComments(@PathVariable("feedId") Long feedId) {
+		return feedService.getFeedCommentsByFeedId(feedId);
 	}
 
 	// 댓글 달기
