@@ -1,6 +1,8 @@
 package ac.kr.cau.dbsul.instagram.controller;
 
 import ac.kr.cau.dbsul.instagram.dto.StoryDto;
+import ac.kr.cau.dbsul.instagram.dto.StoryReadDto;
+import ac.kr.cau.dbsul.instagram.entity.story.StoryReadEntity;
 import ac.kr.cau.dbsul.instagram.service.StoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -51,9 +53,9 @@ public class StoryController {
 	}
 
 	// 스토리 읽기
-	@GetMapping("/read")
-	public String storyRead() {
-		return storyService.storyRead();
+	@PostMapping("/read")
+	public StoryReadEntity storyRead(@RequestBody() StoryReadDto.Request request) {
+		return storyService.storyRead(request);
 	}
 
 	// 스토리 좋아요 누르기
