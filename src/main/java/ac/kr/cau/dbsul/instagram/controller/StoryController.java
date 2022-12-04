@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
-@RestController(value = "/story")
+@RestController(value = "story")
 public class StoryController {
 
 	private final StoryService storyService;

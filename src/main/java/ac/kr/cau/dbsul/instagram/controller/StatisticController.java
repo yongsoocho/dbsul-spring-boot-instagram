@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
-@RestController(value = "/statistic")
+@RestController(value = "statistic")
 public class StatisticController {
 
 	private final StatisticService statisticService;
