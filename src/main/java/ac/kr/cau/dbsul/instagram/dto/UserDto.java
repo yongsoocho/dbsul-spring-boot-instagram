@@ -3,6 +3,8 @@ package ac.kr.cau.dbsul.instagram.dto;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -23,7 +25,7 @@ public class UserDto {
 		private String email;
 		private String nickname;
 		private String profileURL;
-		private Date createdAt;
+		private LocalDateTime lastUpdated;
 	}
 
 }

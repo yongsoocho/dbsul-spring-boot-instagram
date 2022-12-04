@@ -1,5 +1,6 @@
 package ac.kr.cau.dbsul.instagram.entity;
 
+import ac.kr.cau.dbsul.instagram.entity.feed.FeedEntity;
 import ac.kr.cau.dbsul.instagram.entity.main.FollowEntity;
 import lombok.*;
 
@@ -36,5 +37,8 @@ public class UserEntity extends BaseTimeEntity {
 
 	@OneToMany(mappedBy = "followedBy")
 	private List<FollowEntity> followers = new ArrayList<>();
+
+	@OneToMany(mappedBy = "user")
+	private List<FeedEntity> feeds = new ArrayList<>();
 
 }
