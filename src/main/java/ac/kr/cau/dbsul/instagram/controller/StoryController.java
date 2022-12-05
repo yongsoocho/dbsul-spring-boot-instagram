@@ -1,6 +1,7 @@
 package ac.kr.cau.dbsul.instagram.controller;
 
 import ac.kr.cau.dbsul.instagram.dto.StoryDto;
+import ac.kr.cau.dbsul.instagram.dto.StoryLikeDto;
 import ac.kr.cau.dbsul.instagram.dto.StoryReadDto;
 import ac.kr.cau.dbsul.instagram.entity.story.StoryReadEntity;
 import ac.kr.cau.dbsul.instagram.service.StoryService;
@@ -60,7 +61,9 @@ public class StoryController {
 
 	// 스토리 좋아요 누르기
 	@PostMapping("/like")
-	public String likeStory() {
-		return storyService.likeStory();
+	public String likeStory(
+			@RequestBody StoryLikeDto.Request request
+			) {
+		return storyService.likeStory(request);
 	}
 }

@@ -1,6 +1,7 @@
 package ac.kr.cau.dbsul.instagram.service;
 
 import ac.kr.cau.dbsul.instagram.dto.StoryDto;
+import ac.kr.cau.dbsul.instagram.dto.StoryLikeDto;
 import ac.kr.cau.dbsul.instagram.dto.StoryReadDto;
 import ac.kr.cau.dbsul.instagram.entity.story.StoryReadEntity;
 
@@ -21,5 +22,5 @@ public interface StoryService {
 
 	StoryReadEntity storyRead(StoryReadDto.Request request);
 
-	String likeStory();
+	String likeStory(StoryLikeDto.Request request);
 }
