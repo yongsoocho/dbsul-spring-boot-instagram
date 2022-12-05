@@ -4,6 +4,7 @@ import ac.kr.cau.dbsul.instagram.dto.FeedLocationDto;
 import ac.kr.cau.dbsul.instagram.entity.BaseTimeEntity;
 import ac.kr.cau.dbsul.instagram.entity.UserEntity;
 import lombok.*;
+import org.hibernate.annotations.LazyToOne;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -51,5 +52,8 @@ public class FeedEntity extends BaseTimeEntity {
 
 	@OneToMany(mappedBy = "feed")
 	private List<FeedHashtagEntity> hashtags = new ArrayList<>();
+
+	@OneToOne(mappedBy = "feed", fetch = FetchType.LAZY, optional = true)
+	private FeedLocationEntity feedLocation;
 
 }

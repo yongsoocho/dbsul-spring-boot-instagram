@@ -28,7 +28,7 @@ public class FeedLocationEntity extends BaseTimeEntity {
     @Column(name = "coordinate_y")
     private Double coordinateY;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "feed_id")
     private FeedEntity feed;
 }
