@@ -17,10 +17,15 @@ public class StoryController {
 
 	private final StoryService storyService;
 
-	// 스토리 불러오기
+	// (DB의 모든) 스토리 불러오기
 	@GetMapping()
 	public List<StoryDto.Response> getStories() {
 		return storyService.getStories();
+	}
+
+	@GetMapping("/user/{userId}")
+	public List<StoryDto.Response> getStoriesByUserFollowing(@PathVariable("userId") Long userId) {
+		return storyService.getStoriesByUserFollowing(userId);
 	}
 
 	// 스토리 생성

@@ -27,6 +27,14 @@ public class StoryServiceImpl implements StoryService {
 	private final StoryLikeRepository storyLikeRepository;
 
 	@Override
+	public List<StoryDto.Response> getStoriesByUserFollowing(Long userId) {
+		return storyRepository.findStoriesByUserFollowing(userId)
+				.stream()
+				.map(StoryDto.Response::fromEntity)
+				.collect(Collectors.toList());
+	}
+
+	@Override
 	public List<StoryDto.Response> getStories() {
 		List<StoryEntity> stories = storyRepository.getStories();
 

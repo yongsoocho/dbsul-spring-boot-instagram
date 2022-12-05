@@ -8,6 +8,8 @@ import ac.kr.cau.dbsul.instagram.entity.story.StoryReadEntity;
 import java.util.List;
 
 public interface StoryService {
+
+	List<StoryDto.Response> getStoriesByUserFollowing(Long userId);
 	List<StoryDto.Response> getStories();
 
 	StoryDto.Response createStory(StoryDto.Request request);
