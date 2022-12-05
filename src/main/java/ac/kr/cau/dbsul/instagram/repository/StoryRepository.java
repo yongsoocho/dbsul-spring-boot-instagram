@@ -22,7 +22,9 @@ public interface StoryRepository extends JpaRepository<StoryEntity, Long> {
 			"FROM StoryEntity s " +
 			"LEFT JOIN FollowEntity  fol " +
 			"ON s.user.userId = fol.followTo.userId " +
-			"WHERE fol.followedBy.userId = :userId ")
-	List<StoryEntity> findStoriesByUserFollowing(@Param("userId") Long userId);
+			"WHERE fol.followedBy.userId = :userId " +
+			"AND (:onlyBestFiends = fol.bestFriend) " +
+			"ORDER BY s.createdAt ")
+	List<StoryEntity> findStoriesByUserFollowing(@Param("userId") Long userId, boolean isBestFriends);
 
 }

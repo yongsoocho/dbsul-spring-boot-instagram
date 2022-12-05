@@ -15,6 +15,7 @@ public interface FeedRepository extends JpaRepository<FeedEntity, Long> {
             "FROM FeedEntity f " +
             "LEFT JOIN FollowEntity fol " +
             "ON f.user.userId = fol.followTo.userId " +
-            "WHERE fol.followedBy.userId = :userId ")
+            "WHERE fol.followedBy.userId = :userId " +
+            "ORDER BY f.updatedAt ")
     List<FeedEntity> findFeedsByUserFollowing(@Param("userId") Long userId);
 }

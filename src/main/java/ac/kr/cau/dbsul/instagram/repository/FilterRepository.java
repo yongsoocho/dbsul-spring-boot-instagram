@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface FilterRepository extends JpaRepository<FilterEntity, Long> {
 
+
 }

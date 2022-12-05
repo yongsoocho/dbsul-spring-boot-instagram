@@ -23,9 +23,18 @@ public class StoryController {
 		return storyService.getStories();
 	}
 
-	@GetMapping("/user/{userId}")
+	/**
+	 * 팔로우하는 사람들의 스토리 불러오기
+	 * 친한친구 (bestFriends)를 가장 앞으로 불러온다.
+	 * @param userId 현재 사용자 id
+	 * @return 스토리
+	 */
+	@GetMapping("/friends/{userId}")
 	public List<StoryDto.Response> getStoriesByUserFollowing(@PathVariable("userId") Long userId) {
-		return storyService.getStoriesByUserFollowing(userId);
+		List<StoryDto.Response> stories = storyService.getStoriesByUserFollowing(userId, true); // only best friends
+		List<StoryDto.Response> storiesExcludeBestFriends = storyService.getStoriesByUserFollowing(userId, false);
+		stories.addAll(storiesExcludeBestFriends);
+		return stories;
 	}
 
 	// 스토리 생성
@@ -33,13 +42,7 @@ public class StoryController {
 	public StoryDto.Response createStory(@RequestBody() StoryDto.Request request) {
 		return storyService.createStory(request);
 	}
-
-	// 스토리 필터 불러오기
-	@GetMapping("/filter")
-	public String getStoryFilters() {
-		return storyService.getStoryFilters();
-	}
-
+	
 	// 스토리 하이라이트 생성
 	@PostMapping("/highlight")
 	public String createHighlight() {

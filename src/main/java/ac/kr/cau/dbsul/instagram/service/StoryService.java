@@ -9,12 +9,10 @@ import java.util.List;
 
 public interface StoryService {
 
-	List<StoryDto.Response> getStoriesByUserFollowing(Long userId);
+	List<StoryDto.Response> getStoriesByUserFollowing(Long userId, boolean onlyBestFriends);
 	List<StoryDto.Response> getStories();
 
 	StoryDto.Response createStory(StoryDto.Request request);
-
-	String getStoryFilters();
 
 	String createHighlight();
 

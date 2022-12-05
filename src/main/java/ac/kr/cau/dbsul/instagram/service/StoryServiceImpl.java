@@ -7,10 +7,7 @@ import ac.kr.cau.dbsul.instagram.entity.UserEntity;
 import ac.kr.cau.dbsul.instagram.entity.story.StoryEntity;
 import ac.kr.cau.dbsul.instagram.entity.story.StoryLikeEntity;
 import ac.kr.cau.dbsul.instagram.entity.story.StoryReadEntity;
-import ac.kr.cau.dbsul.instagram.repository.StoryLikeRepository;
-import ac.kr.cau.dbsul.instagram.repository.StoryReadRepository;
-import ac.kr.cau.dbsul.instagram.repository.StoryRepository;
-import ac.kr.cau.dbsul.instagram.repository.UserRepository;
+import ac.kr.cau.dbsul.instagram.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,10 +22,11 @@ public class StoryServiceImpl implements StoryService {
 	private final UserRepository userRepository;
 	private final StoryReadRepository storyReadRepository;
 	private final StoryLikeRepository storyLikeRepository;
+	private final FilterRepository filterRepository;
 
 	@Override
-	public List<StoryDto.Response> getStoriesByUserFollowing(Long userId) {
-		return storyRepository.findStoriesByUserFollowing(userId)
+	public List<StoryDto.Response> getStoriesByUserFollowing(Long userId, boolean bestFriends) {
+		return storyRepository.findStoriesByUserFollowing(userId, bestFriends)
 				.stream()
 				.map(StoryDto.Response::fromEntity)
 				.collect(Collectors.toList());
@@ -57,11 +55,6 @@ public class StoryServiceImpl implements StoryService {
 		storyRepository.save(newStory);
 
 		return StoryDto.Response.fromEntity(newStory);
-	}
-
-	@Override
-	public String getStoryFilters() {
-		return null;
 	}
 
 	@Override
