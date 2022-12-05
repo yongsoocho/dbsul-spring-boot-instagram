@@ -22,6 +22,8 @@ public interface FeedService {
 
 	Long createCommentReply(FeedCommentReplyDto.Request request);
 
+	FeedDto.Response getFeedDetail(Long userId, Long feedId);
+
 	List<FeedDto.Response> getFeedsByUserFollows(Long userId);
 	List<FeedCommentDto.Response> getFeedCommentsByFeedId(Long feedId);
 }

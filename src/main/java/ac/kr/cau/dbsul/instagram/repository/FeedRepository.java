@@ -18,4 +18,12 @@ public interface FeedRepository extends JpaRepository<FeedEntity, Long> {
             "WHERE fol.followedBy.userId = :userId " +
             "ORDER BY f.updatedAt ")
     List<FeedEntity> findFeedsByUserFollowing(@Param("userId") Long userId);
+
+    @Query(value = "" +
+            "CALL GET_FEEDS_WITH_TRACKED(:userId, :feedId) ",
+            nativeQuery = true)
+    FeedEntity getFeedDetailByFollowingWithTracked(
+            @Param("userId") Long userId,
+            @Param("feedId") Long feedId
+    );
 }
