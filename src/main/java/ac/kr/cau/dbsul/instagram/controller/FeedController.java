@@ -14,6 +14,12 @@ public class FeedController {
 
 	private final FeedService feedService;
 
+	@GetMapping("/{feedId}")
+	public FeedDto.Response getFeed(
+			@PathVariable("feedId") Long feedId) {
+		return feedService.getFeedDetail(1l, feedId);
+	}
+
 	// 내가 팔로우하는 사람들의 피드목록
 	@GetMapping("/user/{userId}")
 	public List<FeedDto.Response> getFeeds(@PathVariable("userId") Long userId) {
