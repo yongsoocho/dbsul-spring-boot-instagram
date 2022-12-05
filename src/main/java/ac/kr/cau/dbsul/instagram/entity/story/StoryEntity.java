@@ -28,4 +28,8 @@ public class StoryEntity extends BaseTimeEntity {
 	@JoinColumn(name = "user_id")
 	private UserEntity user;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "filter_id")
+	private FilterEntity filter;
+
 }

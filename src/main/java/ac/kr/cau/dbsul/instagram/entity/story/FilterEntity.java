@@ -24,4 +24,7 @@ public class FilterEntity extends BaseTimeEntity {
 	@Column(name = "media_url")
 	private String mediaURL;
 
+	@Column
+	private String name;
+
 }

@@ -22,13 +22,18 @@ public class StoryDto {
 		private String mediaURL;
 		private String nickname;
 		private String profileURL;
+		private FilterDto.Response filter;
 
 		public static Response fromEntity(StoryEntity storyEntity) {
+			FilterDto.Response filter = FilterDto.Response
+					.fromEntity(storyEntity.getFilter());
+
 			return Response.builder()
 					.storyId(storyEntity.getStoryId())
 					.mediaURL(storyEntity.getMediaURL())
 					.nickname(storyEntity.getUser().getNickname())
 					.profileURL(storyEntity.getUser().getProfileURL())
+					.filter(filter)
 					.build();
 		}
 	}

@@ -1,6 +1,7 @@
 package ac.kr.cau.dbsul.instagram.repository;
 
 import ac.kr.cau.dbsul.instagram.entity.feed.FeedEntity;
+import ac.kr.cau.dbsul.instagram.entity.story.FilterEntity;
 import ac.kr.cau.dbsul.instagram.entity.story.StoryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
