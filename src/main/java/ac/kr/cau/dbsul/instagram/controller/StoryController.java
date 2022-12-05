@@ -17,11 +17,6 @@ public class StoryController {
 
 	private final StoryService storyService;
 
-	// (DB의 모든) 스토리 불러오기
-	@GetMapping()
-	public List<StoryDto.Response> getStories() {
-		return storyService.getStories();
-	}
 
 	/**
 	 * 팔로우하는 사람들의 스토리 불러오기
@@ -42,7 +37,7 @@ public class StoryController {
 	public StoryDto.Response createStory(@RequestBody() StoryDto.Request request) {
 		return storyService.createStory(request);
 	}
-	
+
 	// 스토리 하이라이트 생성
 	@PostMapping("/highlight")
 	public String createHighlight() {

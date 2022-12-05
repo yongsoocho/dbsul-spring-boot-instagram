@@ -28,18 +28,10 @@ public class StoryServiceImpl implements StoryService {
 	public List<StoryDto.Response> getStoriesByUserFollowing(Long userId, boolean bestFriends) {
 		return storyRepository.findStoriesByUserFollowing(userId, bestFriends)
 				.stream()
-				.map(StoryDto.Response::fromEntity)
+				.map(entity -> StoryDto.Response.fromEntity(entity, bestFriends))
 				.collect(Collectors.toList());
 	}
 
-	@Override
-	public List<StoryDto.Response> getStories() {
-		List<StoryEntity> stories = storyRepository.getStories();
-
-		return stories.stream()
-				.map(StoryDto.Response::fromEntity)
-				.collect(Collectors.toList());
-	}
 
 	@Override
 	public StoryDto.Response createStory(StoryDto.Request request) {
@@ -54,7 +46,7 @@ public class StoryServiceImpl implements StoryService {
 
 		storyRepository.save(newStory);
 
-		return StoryDto.Response.fromEntity(newStory);
+		return StoryDto.Response.fromEntity(newStory, null);
 	}
 
 	@Override
